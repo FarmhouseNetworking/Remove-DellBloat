@@ -94,7 +94,7 @@ $FolderRx  = ($LeftoverFolders | Where-Object { $_ -notmatch '^\\' } | ForEach-O
 New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
 $Transcript = Join-Path $LogDir ("DellCleanup_{0:yyyyMMdd_HHmmss}.log" -f (Get-Date))
 Start-Transcript -Path $Transcript -Force | Out-Null
-function Log([string]$m) { Write-Output ("[{0:HH:mm:ss}] {1}" -f (Get-Date), $m) }
+function Log([string]$m) { Write-Host ("[{0:HH:mm:ss}] {1}" -f (Get-Date), $m) }
 
 function Test-Target([string]$Name) {
     $Name -and $Name -match $TargetRx -and $Name -notmatch $KeepRx
